@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const flowerSchema = new mongoose.Schema(
+const flowerSchema = new Schema(
   {
     name: { type: String, required: true },
     description: String,
@@ -11,4 +11,4 @@ const flowerSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-export const Flower = mongoose.model('Flower', flowerSchema);
+export const Flower = model('Flower', flowerSchema);

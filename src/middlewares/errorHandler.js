@@ -1,19 +1,22 @@
 import { HttpError } from 'http-errors';
+import sendResponse from '../utils/sendResponse.js';
 
 export const errorHandler = (err, req, res) => {
   if (err instanceof HttpError) {
-    return res.status(err.status).json({
-      status: err.status,
+    return sendResponse(res, {
+      status: 'error',
+      code: err.status,
       message: err.message,
-      data: err,
+      data: null,
     });
   }
 
   console.error('Unexpected error:', err);
 
-  return res.status(500).json({
-    status: 500,
+  return sendResponse(res, {
+    status: 'error',
+    code: 500,
     message: 'Something went wrong',
-    data: err?.message || 'Unknown error',
+    data: null,
   });
 };

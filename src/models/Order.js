@@ -1,11 +1,11 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const orderSchema = new mongoose.Schema(
+const orderSchema = new Schema(
   {
     flowers: [
       {
         flowerId: {
-          type: mongoose.Schema.Types.ObjectId,
+          type: Schema.Types.ObjectId,
           ref: 'Flower',
           required: true,
         },
@@ -24,4 +24,4 @@ const orderSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-export const Order = mongoose.model('Order', orderSchema);
+export const Order = model('Order', orderSchema);
