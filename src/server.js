@@ -13,7 +13,12 @@ dotenv.config();
 export const setupServer = async () => {
   const app = express();
 
-  app.use(cors());
+  app.use(
+    cors({
+      origin: 'http://localhost:5173',
+    }),
+  );
+
   app.use(cookieParser());
   app.use(
     pino({
