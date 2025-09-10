@@ -15,10 +15,12 @@ export const setupServer = async () => {
 
   app.use(
     cors({
-      origin: 'http://localhost:5173',
+      origin: [
+        'http://localhost:5173',
+        'https://flowers-frontend-mu.vercel.app',
+      ],
     }),
   );
-
   app.use(cookieParser());
   app.use(
     pino({
